@@ -12,6 +12,10 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y git openssh-serve
 # Prepare container for ssh
 RUN mkdir /var/run/sshd && adduser --quiet jenkins && echo "jenkins:jenkins" | chpasswd
 
+# Install newman for commandline Postman within Jenkins
+# See: http://blog.getpostman.com/2015/09/03/how-to-write-powerful-automated-api-tests-with-postman-newman-and-jenkins/
+RUN nmp install -g newman
+
 ENV CI=true
 EXPOSE 22
 
